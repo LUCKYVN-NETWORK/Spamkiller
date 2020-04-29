@@ -1,0 +1,20 @@
+name: Spamkiller
+version: 1.0.0
+author: Kuraky
+main: me.kuraky.spamkiller.Spamkiller
+description: Stops spam on your server
+api-version: 1.15
+permissions:
+  spamkiller.notify:
+    description: Allows to see plugin notifications
+  spamkiller.exempt:
+    description: Makes the plugin ignore you
+  spamkiller.reload:
+    description: Allows to reload the plugin's config
+  spamkiller.set:
+    description: Allows to change player's mute time
+commands:
+  spamkiller:
+    description: Prefix command
+    usage: /spamkiller <subcommand> [args]
+    aliases: sk
