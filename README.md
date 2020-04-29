@@ -5,15 +5,15 @@ Checks for different spam-like behaviours and attempts to limit them by blocking
 helping you mantain a clean chat.
 
 Currently checks for:
-- Spambots(similar message delay)
+- Spambots (similar message delay)
 - Message similarity
 - Repeated characters in a message
 - Caps lock
 - Unnaturally high typing speed
 - Sending lots of messages quickly
 - Group spam
-- Non-ASCII characters(disabled by default to prevent issues with some alphabets)
-- Unnaturally long words(disabled by default to prevent issues with some languages)
+- Non-ASCII characters (disabled by default to prevent issues with some alphabets)
+- Unnaturally long words (disabled by default to prevent issues with some languages)
 
 There is a config file that allows you to easily modify nearly every aspect of the plugin.
 
