@@ -56,7 +56,6 @@ public class PlayerData {
     public LinkedList<Long> getMessageTimes() {
         if(messageTimes == null) { //in case of a weird error
             messageTimes = new LinkedList<>();
-            Bukkit.getLogger().warning("Null message times list");
         }
         return messageTimes;
     }
@@ -64,7 +63,6 @@ public class PlayerData {
     public LinkedList<String> getMessages() {
         if(messages == null) { //same as above
             messages = new LinkedList<>();
-            Bukkit.getLogger().warning("Null messages list");
         }
         return messages;
     }
@@ -72,7 +70,7 @@ public class PlayerData {
     public static LinkedList<String> getGlobalMessages() {
         if(globalMessages == null) { //same as above
             globalMessages = new LinkedList<>();
-            Bukkit.getLogger().warning("Null global messages list");
+            Bukkit.getLogger().warning("[Spamkiller] Null global messages list");
         }
         return globalMessages;
     }
@@ -80,7 +78,7 @@ public class PlayerData {
     public static LinkedList<UUID> getGlobalSenders() {
         if(globalSenders == null) { //same as above
             globalSenders = new LinkedList<>();
-            Bukkit.getLogger().warning("Null global senders list");
+            Bukkit.getLogger().warning("[Spamkiller] Null global senders list");
         }
         return globalSenders;
     }

@@ -25,7 +25,7 @@ public class PerfectDelay extends Check {
                 for (int i = 1; i < messages - 1; i++) {
                     int comparedDiff = (int) (messageTimes.get(i) - messageTimes.get(i + 1));
 
-                    double threshold = Math.min(diff/85d, 75);
+                    double threshold = Math.min(diff/90d, 70);
                     int diffDiff = Math.abs(diff - comparedDiff);
 
                     if (diffDiff < threshold) {
