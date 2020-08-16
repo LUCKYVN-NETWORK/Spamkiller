@@ -50,6 +50,13 @@ data-task-period: 600
 #This will make it easier for you to find out if a player got muted by accident and for what exactly were they muted
 enable-logs: true
 
+#After how many days will the log files be deleted?
+#Set to 0 to disable deleting old log files
+#Setting enable-logs to false doesn't disable this
+#To preserve a specific log file just change it's name
+#Only files with the name format "log_year-month-day_hour-minute-second.txt" will be deleted
+log-time: 14
+
 #CHECKS
 #Weight affects by how much the mute time will be multiplied for each check, minimum weight is 1
 #E.g. if a player receives a 2 second mute from a check with a weight of 20, the mute will instead be set to 2*20 = 40 seconds

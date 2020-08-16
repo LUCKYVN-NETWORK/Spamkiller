@@ -14,6 +14,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Spamkiller extends JavaPlugin {
@@ -27,11 +28,19 @@ public class Spamkiller extends JavaPlugin {
 
         ConsoleCommandSender consoleCommandSender = getServer().getConsoleSender();
 
+        //COMMAND
+        PluginCommand spamkillerCommand = getCommand("spamkiller");
+        if(spamkillerCommand != null) {
+            spamkillerCommand.setExecutor(new SpamkillerCommand());
+            spamkillerCommand.setTabCompleter(new CommandTabCompleter());
+        }
+
         //LISTENERS
         consoleCommandSender.sendMessage(defaultPrefix + " Registering listeners...");
-        getServer().getPluginManager().registerEvents(new ChatListener(), this);
-        getServer().getPluginManager().registerEvents(new JoinListener(), this);
-        getServer().getPluginManager().registerEvents(new QuitListener(), this);
+        PluginManager pluginManager = getServer().getPluginManager();
+        pluginManager.registerEvents(new ChatListener(), this);
+        pluginManager.registerEvents(new JoinListener(), this);
+        pluginManager.registerEvents(new QuitListener(), this);
 
         //MANAGERS, HAVE TO BE IN THIS ORDER
         consoleCommandSender.sendMessage(defaultPrefix + " Loading checks...");
@@ -40,14 +49,13 @@ public class Spamkiller extends JavaPlugin {
         consoleCommandSender.sendMessage(defaultPrefix + " Loading config...");
         ConfigManager.init();
 
-        consoleCommandSender.sendMessage(defaultPrefix + " Creating log file...");
-        LogManager.init();
-
-        //COMMAND
-        PluginCommand spamkillerCommand = getCommand("spamkiller");
-        if(spamkillerCommand != null) {
-            spamkillerCommand.setExecutor(new SpamkillerCommand());
-            spamkillerCommand.setTabCompleter(new CommandTabCompleter());
+        if(ConfigManager.getEnableLogs()) {
+            consoleCommandSender.sendMessage(defaultPrefix + " Creating log file...");
+            LogManager.init();
+        }
+        if(ConfigManager.getLogTime() > 0) {
+            consoleCommandSender.sendMessage(defaultPrefix + " Deleting outdated log files...");
+            LogManager.deleteOldLogs();
         }
 
         //TASK
@@ -64,5 +72,10 @@ public class Spamkiller extends JavaPlugin {
         }
 
         consoleCommandSender.sendMessage(defaultPrefix + " §aDone!");
+    }
+
+    public void reload() {
+        ConfigManager.init();
+        LogManager.init();
     }
 }

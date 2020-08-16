@@ -18,6 +18,7 @@ public class ConfigManager {
     private static boolean BLOCK_LAST_MESSAGE;
     private static long DATA_TASK_PERIOD;
     private static boolean ENABLE_LOGS;
+    private static int LOG_TIME;
 
     //CHECKS
     private static String BLOCK_MESSAGE;
@@ -62,6 +63,7 @@ public class ConfigManager {
         BLOCK_LAST_MESSAGE = getBoolean("block-last-message");
         DATA_TASK_PERIOD = getLongPositive("data-task-period")*20;
         ENABLE_LOGS = getBoolean("enable-logs");
+        LOG_TIME = getIntNonNegative("log-time");
 
         //CHECKS
         setWeights();
@@ -176,6 +178,10 @@ public class ConfigManager {
 
     public static boolean getEnableLogs() {
         return ENABLE_LOGS;
+    }
+
+    public static int getLogTime() {
+        return LOG_TIME;
     }
 
     //CHECKS

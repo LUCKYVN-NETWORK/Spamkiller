@@ -1,5 +1,6 @@
 package me.kuraky.spamkiller.commands;
 
+import me.kuraky.spamkiller.Spamkiller;
 import me.kuraky.spamkiller.config.ConfigManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -13,7 +14,7 @@ public class ReloadCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if(commandSender.hasPermission("spamkiller.reload")) {
-            ConfigManager.init();
+            Spamkiller.INSTANCE.reload();
 
             String message = ChatColor.translateAlternateColorCodes('&', ConfigManager.getPrefix() + " Config reloaded");
 
