@@ -76,7 +76,7 @@ public class ChatListener implements Listener {
 
                 playerData.setMuteTime(chatDelay);
 
-                if (block || playerData.getMuteTime() > 0 && ConfigManager.getEnableLogs()) LogManager.log(logMessages);
+                if ((block || playerData.getMuteTime() > 0) && ConfigManager.getEnableLogs()) LogManager.log(logMessages);
 
                 if (chatDelay >= ConfigManager.getMinimumMuteTime() / 3 && playerData.getMuteTime() == 0 && !block) {
                     String warningMessage = ConfigManager.getWarningMessage();

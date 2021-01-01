@@ -22,9 +22,9 @@ public class LogManager {
     private static File logsDirectory;
 
     public static void init() {
-        if(!ConfigManager.getEnableLogs()) return;
-
         spamkiller = Spamkiller.INSTANCE;
+
+        if(!ConfigManager.getEnableLogs()) return;
 
         String path = spamkiller.getDataFolder().getPath() + "/logs";
 
